@@ -4,6 +4,7 @@ const CurrencySchema = new Schema(
   {
     code: String,
     hasSubscription: Boolean,
+    forex: String,
   },
   {
     timestamps: true,

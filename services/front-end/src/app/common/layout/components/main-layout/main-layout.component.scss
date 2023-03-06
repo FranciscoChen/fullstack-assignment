@@ -52,3 +52,9 @@
     max-width: 960px;
   }
 }
+
+@media screen and (max-width: 740px) {
+  .mainLayout__routerOutletContainer {
+    width: calc(100% - 0.5 *var(--space-xlarge));
+  }
+}

@@ -6,4 +6,6 @@ export interface ICurrencyRepository {
   findAllSubscriptions(): Promise<Currency[]>;
   findByCode(code: string): Promise<Nullable<Currency>>;
   changeSubscription(currency: Currency): Promise<void>;
+  findSubscribedByCodeForex(code: string): Promise<Nullable<Currency>>;
+  findAllSubscribedForex(): Promise<Currency[]>;
 }

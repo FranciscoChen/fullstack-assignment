@@ -7,6 +7,7 @@ export class MongooseCurrencyRepository implements ICurrencyRepository {
       id: currencyDB._id,
       code: currencyDB.code,
       hasSubscription: currencyDB.hasSubscription,
+      forex: currencyDB.forex,
     });
   }
 
@@ -15,6 +16,7 @@ export class MongooseCurrencyRepository implements ICurrencyRepository {
       _id: currency.id,
       code: currency.code,
       hasSubscription: currency.hasSubscription,
+      forex: currency.forex,
     };
   }
 
@@ -28,7 +30,15 @@ export class MongooseCurrencyRepository implements ICurrencyRepository {
       hasSubscription: true,
     });
 
-    return subscribedCurrencies.map((currency) => this.toDomain(currency));
+    var subscriptions = [];
+    const len = subscribedCurrencies.length;
+
+    for (var i = 0; i < len; ++i) {
+      subscriptions.push( this.toDomain(subscribedCurrencies[i]) );
+    }
+
+    //return subscribedCurrencies.map((currency) => this.toDomain(currency));
+    return subscriptions;
   }
 
   async findByCode(code: string): Promise<Nullable<Currency>> {
@@ -39,5 +49,18 @@ export class MongooseCurrencyRepository implements ICurrencyRepository {
   async changeSubscription(currency: Currency): Promise<void> {
     const document = this.fromDomain(currency);
     await CurrencySchema.updateOne({ _id: currency.id }, { $set: document });
+  }
+
+  async findAllSubscribedForex(): Promise<Currency[]> {
+    const subscribedCurrencies= await CurrencySchema.find({
+      hasSubscription: true,
+    });
+
+    return subscribedCurrencies.map((currency) => this.toDomain(currency));
+  }
+
+  async findSubscribedByCodeForex(code: string): Promise<Nullable<Currency>> {
+    const currency = await CurrencySchema.findOne({ code: code, hasSubscription: true, });
+    return currency === null ? null : this.toDomain(currency);
   }
 }

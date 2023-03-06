@@ -23,7 +23,7 @@ registerLocaleData(localeEn, 'en');
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     AppRoutingModule,

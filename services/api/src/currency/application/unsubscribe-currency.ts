@@ -7,10 +7,10 @@ export class UnsubscribeCurrency {
     this.currencyRepository = currencyRepository;
   }
 
-  async execute(code: string) {
-    const currency = await this.currencyRepository.findByCode(code);
+  async execute(_code: string) {
+    const currency = await this.currencyRepository.findByCode(_code);
     if (!currency) {
-      return CurrencyDoesNotExistError.withCode(code);
+      return CurrencyDoesNotExistError.withCode(_code);
     }
 
     currency.unsubscribe();
