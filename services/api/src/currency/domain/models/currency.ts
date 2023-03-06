@@ -15,7 +15,7 @@ export class Currency {
     this._id = id;
     this._code = code;
     this._hasSubscription = hasSubscription;
-    this._forex= forex;
+    this._forex = forex;
   }
 
   static fromPrimitives({ id, code, hasSubscription, forex }) {

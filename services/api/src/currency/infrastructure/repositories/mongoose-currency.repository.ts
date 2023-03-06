@@ -30,15 +30,7 @@ export class MongooseCurrencyRepository implements ICurrencyRepository {
       hasSubscription: true,
     });
 
-    var subscriptions = [];
-    const len = subscribedCurrencies.length;
-
-    for (var i = 0; i < len; ++i) {
-      subscriptions.push( this.toDomain(subscribedCurrencies[i]) );
-    }
-
-    //return subscribedCurrencies.map((currency) => this.toDomain(currency));
-    return subscriptions;
+    return subscribedCurrencies.map((currency) => this.toDomain(currency));
   }
 
   async findByCode(code: string): Promise<Nullable<Currency>> {

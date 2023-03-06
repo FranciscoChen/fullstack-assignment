@@ -36,7 +36,6 @@ export class CurrencyController {
   async findAllSubscribedCurrencies(req: Request, res: Response) {
     try {
       const currencies = await this.getSubscribedCurrencies.execute();
-      var len = currencies.length;
       res.status(200).json( currencies );
     } catch (err) {
       let status = 500;
