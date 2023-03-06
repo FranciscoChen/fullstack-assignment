@@ -9,22 +9,25 @@ export class Currency {
   private _id: Types.ObjectId;
   private _code: string;
   private _hasSubscription: boolean;
+  private _forex: string;
 
-  private constructor({ id, code, hasSubscription }) {
+  private constructor({ id, code, hasSubscription, forex }) {
     this._id = id;
     this._code = code;
     this._hasSubscription = hasSubscription;
+    this._forex = forex;
   }
 
-  static fromPrimitives({ id, code, hasSubscription }) {
+  static fromPrimitives({ id, code, hasSubscription, forex }) {
     return new Currency({
       id: id,
       code: code,
       hasSubscription: hasSubscription,
+      forex: forex,
     });
   }
 
-  static create({ id = new Types.ObjectId(), code, hasSubscription = true }) {
+  static create({ id = new Types.ObjectId(), code, hasSubscription = true, forex = "{}" }) {
     if (!code) {
       return IncorrectCurrencyError.withCode(code);
     }
@@ -33,6 +36,7 @@ export class Currency {
       id: id,
       code: code,
       hasSubscription: hasSubscription,
+      forex: forex,
     });
   }
 
@@ -46,6 +50,10 @@ export class Currency {
 
   get hasSubscription(): boolean {
     return this._hasSubscription;
+  }
+
+  get forex(): string {
+    return this._forex;
   }
 
   subscribe() {

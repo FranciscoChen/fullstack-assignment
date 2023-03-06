@@ -1,1 +1,20 @@
-<p>forex-landing-page works!</p>
+<div class="forexPage">
+  <h1>My subscribed currencies</h1>
+  <div class="info">
+    <div class="flexbox">
+      <input id="new-currency" #currencyName />
+      <button type="button" class="add-button" (click)="addCurrencySubscription(currencyName.value); currencyName.value=''">
+        Subscribe
+      </button>
+    </div>
+    <ul class="currencies">
+      <li *ngFor="let currency of currencies">
+        <a routerLink="/forex/detail/{{currency._code}}">
+          <span class="badge">{{currency._code}}</span>
+        </a>
+        <button type="button" class="delete"
+          (click)="removeCurrencySubscription(currency)">Unsubscribe</button>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,129 @@
+@use 'theme';
+
+.currencies {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.currencies li {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.currencies li:last-child {
+  margin-bottom: 0;
+}
+
+.currencies a {
+  color: #333;
+  text-decoration: none;
+  background-color: none;
+  display: block;
+  width: 100%;
+}
+
+.currencies a:hover {
+  color: #2c3a41;
+  text-decoration: none;
+  background-color: var(--color-neutral-variant-2);
+}
+
+.currencies a:active {
+  background-color: var(--color-neutral-variant-1);
+  color: #fafafa;
+}
+
+.currencies .badge {
+  color: white;
+  padding: 0.5em 1.5em;
+  background-color: var(--color-primary);
+  width: 2.1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.info{
+  border: 1px solid var(--color-primary);
+  border-radius: 2rem;
+  padding: 2rem;
+}
+
+@media screen and (max-width: 740px) {
+
+  .info{
+    border: none;
+    padding: .1rem;
+  }
+
+}
+
+#new-currency {
+  background-color: var(--color-primary);
+  border: none;
+  padding: .5rem 1.5rem;
+  font-size: 1rem;
+  color: var(--color-white);
+  width: 2.1rem;
+}
+
+.flexbox{
+  display:flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.add-button {
+  border: none;
+  padding: .5rem 1.5rem;
+  font-size: 1rem;
+  background-color: var(--color-primary-variant-2);
+}
+
+.add-button:hover {
+  color: var(--color-white);
+  background-color: var(--color-primary-variant-1);
+}
+
+button.delete {
+  font-size: 1rem;
+  border: none;
+  margin: 0;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--color-yellow-variant-2);
+}
+
+button.delete:hover {
+  background-color: var(--color-yellow-variant-1);
+  color: var(--color-white);
+}
+
+.forexPage {
+  margin-top: var(--space-large);
+  h1 {
+    @include theme.font-h1();
+  }
+
+  h2 {
+    @include theme.font-subtitle();
+  }
+
+  p {
+    @include theme.font-body();
+  }
+
+  a {
+    @include theme.font-link();
+  }
+
+  code {
+    @include theme.font-small();
+    background-color: var(--color-neutral-variant-2);
+    display: inline-block;
+    padding: 0 var(--space-xsmall);
+  }
+}

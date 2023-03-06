@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ForexLandingPageComponent } from './pages/forex-landing-page/forex-landing-page.component';
+import { ForexDetailPageComponent } from './pages/forex-detail-page/forex-detail-page.component';
 import { TRANSLOCO_SCOPE } from '@ngneat/transloco';
 import { RouterModule } from '@angular/router';
 import { routes } from './forex.routing';
-
 
 export const loader = ['en', 'es'].reduce((acc, lang) => {
   acc[lang] = () => import(`./i18n/forex.${lang}.json`);
@@ -13,7 +13,8 @@ export const loader = ['en', 'es'].reduce((acc, lang) => {
 
 @NgModule({
   declarations: [
-    ForexLandingPageComponent
+    ForexLandingPageComponent,
+    ForexDetailPageComponent,
   ],
   imports: [
     CommonModule,

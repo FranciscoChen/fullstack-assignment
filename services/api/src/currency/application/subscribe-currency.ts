@@ -12,7 +12,7 @@ export class SubscribeCurrency {
   }
 
   async execute(currencyReq) {
-    const currency = await this.currencyRepository.findByCode(currencyReq.code);
+    const currency = await this.currencyRepository.findByCode(currencyReq._code);
 
     if (currency) {
       currency.subscribe();
@@ -20,7 +20,7 @@ export class SubscribeCurrency {
       return currency;
     }
 
-    const newCurrency = Currency.create({ code: currencyReq.code });
+    const newCurrency = Currency.create({ code: currencyReq._code });
     await this.currencyRepository.subscribe(newCurrency as Currency);
     return newCurrency;
   }
